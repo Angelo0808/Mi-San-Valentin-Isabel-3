@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffccdd;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            padding-top: 120px; 
+        }
+        h1 {
+            font-size: 2em;
+            color: #d63384;
+            margin-top: 0;
+        }
+        .btn {
+            font-size: 1.5em;
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .btn-yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+        .btn-no {
+            background-color: #444;
+            color: white;
+        }
+        #hello-kitty-img {
+            width: 150px;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: move 2s infinite alternate;
+        }
+        #left-img, #right-img {
+            position: absolute;
+            top: 20px;
+            width: 150px; /* Aumenta el tamaño de las imágenes */
+        }
+        #left-img {
+            left: 5%; /* Ajusta la posición según sea necesario */
+        }
+        #right-img {
+            right: 5%; /* Ajusta la posición según sea necesario */
+        }
+        @keyframes move {
+            from { transform: translate(-50%, 0); }
+            to { transform: translate(-50%, 10px); }
+        }
+        .hearts {
+            position: fixed;
+            bottom: -50px;
+            font-size: 30px;
+            color: red;
+            animation: float 5s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <img id="hello-kitty-img" src="https://i.pinimg.com/originals/14/12/a6/1412a602c0cd0027a7c494967a564e7e.gif" alt="Hello Kitty y su novio">
+    
+    
+    <img id="left-img" src="https://i.pinimg.com/originals/de/4d/59/de4d59ebdfa718d50e3c3bf33333cc19.gif" alt="Imagen izquierda">
+    <img id="right-img" src="https://e7.pngegg.com/pngimages/985/260/png-clipart-cat-kitten-gif-pusheen-love-cat-thumbnail.png" alt="Imagen derecha">
+    
+    <h1>¿QUIERES SER MI SAN VALENTÍN?</h1>
+    <button class="btn btn-yes" onclick="showLove()">Sí</button>
+    <button class="btn btn-no" onclick="showDoubt()">No</button>
+
+    <!-- Para el Si -->
+    <div id="love-response" class="hidden">
+        <img src="https://i.pinimg.com/originals/fe/64/99/fe64994d8b6a522bde6cb3aa43b28414.gif" width="300px">
+        <h2>Sabía que dirías que sí, mi pequeña princesa 💖</h2>
+    </div>
+    
+    <!-- Respuesta para NO -->
+    <div id="doubt-response" class="hidden">
+        <h2>¿Estás segura? :( </h2>
+        <img src="https://i.pinimg.com/originals/00/e5/65/00e565bae9bc8db29930f2058cbb6bd3.gif" width="200px">
+    </div>
+    
+    <script>
+        function showLove() {
+            document.getElementById('love-response').classList.remove('hidden');
+            document.getElementById('doubt-response').classList.add('hidden');
+        }
+        function showDoubt() {
+            document.getElementById('doubt-response').classList.remove('hidden');
+            document.getElementById('love-response').classList.add('hidden');
+        }
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.classList.add("hearts");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
+
